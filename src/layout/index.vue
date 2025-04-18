@@ -1,5 +1,6 @@
 <template>
   <Layout class="layout">
+    <!-- 菜单显示在左方 -->
     <Layout.Sider
       v-if="layoutSetting.layout === 'sidemenu'"
       v-model:collapsed="collapsed"
@@ -13,6 +14,7 @@
       <AsideMenu :collapsed="collapsed" :theme="getTheme" />
     </Layout.Sider>
     <Layout>
+      <!-- 菜单显示在上方，水平展示 -->
       <PageHeader v-model:collapsed="collapsed" :theme="getTheme">
         <template v-if="layoutSetting.layout === 'topmenu'" #left>
           <Logo :collapsed="collapsed" />

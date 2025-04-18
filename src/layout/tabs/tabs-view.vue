@@ -10,6 +10,7 @@
     >
       <a-tab-pane v-for="tabItem in tabsViewStore.getTabsList" :key="tabItem.fullPath">
         <template #tab>
+          <!-- itemRefs[tabItem.fullPath] = ins：将组件实例 ins 存储到 itemRefs 对象中，键名为 tabItem.fullPath -->
           <TabsOperator
             :ref="(ins: TabsOperatorInstance) => (itemRefs[tabItem.fullPath] = ins)"
             :tab-item="tabItem"
@@ -75,12 +76,14 @@
 
   // tabs 编辑（remove || add）
   const editTabItem = (targetKey: string, action: string) => {
+    console.log('editTabItem--eg:/dashboard/welcome remove', targetKey, action);
     if (action == 'remove') {
       itemRefs[targetKey]?.removeTab();
     }
   };
   // 切换页面
   const changePage = (key) => {
+    console.log('changePage', key);
     Object.is(route.fullPath, key) || router.push(key);
   };
 </script>

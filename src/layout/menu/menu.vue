@@ -50,6 +50,7 @@
 
   // 获取当前打开的子菜单
   const getOpenKeys = () => {
+    console.log(currentRoute, '------currentRoute.matched------');
     return (
       currentRoute.meta?.namePath ?? (currentRoute.matched.slice(1).map((n) => n.name) as string[])
     );

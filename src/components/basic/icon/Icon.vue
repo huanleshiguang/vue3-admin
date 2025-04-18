@@ -35,6 +35,11 @@
       vnode.el.insertAdjacentHTML?.('afterbegin', `<title>${title}</title>`);
     }
   };
+
+  // omit:忽略对象的部分属性，返回一个新对象
+  // var object = { 'a': 1, 'b': '2', 'c': 3 };
+  // omit(object, ['a', 'c']);
+  //  => { 'b': '2' }
 </script>
 
 <template>
