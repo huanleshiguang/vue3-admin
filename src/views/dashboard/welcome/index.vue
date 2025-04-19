@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, watchEffect } from 'vue';
+  import { onMounted, ref, watchEffect, getCurrentInstance } from 'vue';
   import { Descriptions, Badge } from 'ant-design-vue';
   import BrowserType from '@/utils/browser-type';
   import { useBattery } from '@/hooks/useBattery';
@@ -39,7 +39,13 @@
   const { battery, batteryStatus, calcDischargingTime } = useBattery();
   // 获取浏览器信息
   const browserInfo = ref(BrowserType('zh-cn'));
+  // proxy为实例的代理对象
+  const { proxy } = getCurrentInstance();
 
+  onMounted(() => {
+    console.log('proxy', proxy);
+    proxy?.$message.success('全局注册meessage属性');
+  });
   watchEffect(() => {
     Object.assign(browserInfo.value, {
       距离电池充满需要:

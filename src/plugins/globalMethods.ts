@@ -1,14 +1,17 @@
 import type { App } from 'vue';
-
 // import useFormModal from '@/hooks/useFormModal'
 // import useModal from '@/hooks/useModal/index';
 import permission from '@/permission';
+import message from '@/plugins/message';
 /**
  * 注册全局方法
  * @param app
  */
 export function setupGlobalMethods(app: App) {
-  app.use(permission);
+  // app.use(permission) 是 Vue 3 的标准插件安装方式
+  // 它会自动调用 permission 对象中的 install 方法
+  app.use(permission); // 安装permission插件
+  app.use(message); // 安装message插件
   // app.use(useFormModal)
   // app.use(useModal);
   // 全局挂载Reflect反射对象,以便在vue模板中使用

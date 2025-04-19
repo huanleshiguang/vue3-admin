@@ -68,6 +68,7 @@
           return true;
         }
         if (isString(auth)) {
+          console.log('hasPermission', auth, hasPermission(auth));
           const isValid = hasPermission(auth);
           item.disabled ??= !isValid;
           if (item.disabled && !isValid) {

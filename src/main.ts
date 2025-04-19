@@ -6,9 +6,7 @@ import { setupIcons } from './components/basic/icon';
 import { setupStore } from '@/store';
 import { setupI18n } from '@/locales';
 import { setupAntd, setupAssets, setupGlobalMethods } from '@/plugins';
-
 const app = createApp(App);
-
 function setupPlugins() {
   // 安装图标
   setupIcons();
@@ -28,7 +26,7 @@ async function setupApp() {
     await setupMock();
   }
 
-  // 挂载vuex状态管理
+  // 挂载pinia状态管理
   setupStore(app);
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side

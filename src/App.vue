@@ -1,6 +1,6 @@
 <template>
   <ProConfigProvider>
-    <router-view #="{ Component }">
+    <router-view v-slot="{ Component }">
       <component :is="Component" />
     </router-view>
     <LockScreen />
