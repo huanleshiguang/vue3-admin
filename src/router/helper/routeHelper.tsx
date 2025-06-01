@@ -12,12 +12,14 @@ export const transformMenuToRoutes = (
   routeList: RouteRecordRaw[],
   parentRoute?: RouteRecordRaw,
 ) => {
+  console.log(asyncRoutes, 'asyncRoutes???');
+
   routeList.forEach((route) => {
-    route.meta ||= {} as RouteMeta;
+    route.meta ||= {} as RouteMeta; // 等价于route.meta = route.meta || {} as RouteMeta;
     const { show = 1, type, isExt, extOpenMode } = route.meta;
     const compPath = route.component as unknown as string;
-
     // 是否在菜单中隐藏
+    // 逻辑空赋值运算符（x ??= y）仅在 x 是空值（null 或 undefined）时对其赋值。
     route.meta.hideInMenu ??= !show;
 
     if (!isExt) {
@@ -47,6 +49,7 @@ export const transformMenuToRoutes = (
         route.path = route.path.replace(new RegExp('://'), '/');
       } else if (compPath) {
         route.component = asyncRoutes[compPath];
+
         // 前端 src/views 目录下无对应路由组件
         if (!route.component) {
           route.component = () => import('@/views/error/comp-not-found.vue');
@@ -68,7 +71,6 @@ export const generateDynamicRoutes = (menus: RouteRecordRaw[]) => {
   genNamePathForRoutes(allRoute);
   rootRoute.children = allRoute;
   router.addRoute(rootRoute);
-  console.log('routes', router.getRoutes());
   return routes;
 };
 

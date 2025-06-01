@@ -16,9 +16,7 @@ import { useUserStore } from '@/store/modules/user';
  * @returns {boolean} true | false
  */
 export const hasPermission = (permCode: PermissionType) => {
-  console.log('permCode', permCode);
   const permissionList = useUserStore().perms;
-  console.log('permissionList', permissionList);
   return permissionList.some((n) => n === permCode);
 };
 
