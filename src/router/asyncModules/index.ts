@@ -1,7 +1,7 @@
 type ImportVueFileType = typeof import('*.vue');
 type ImportVueFileFnType = () => Promise<ImportVueFileType>;
 
-// auto load
+// 加载views文件夹下面所有的.vue文件
 const modulesFiles = import.meta.glob<ImportVueFileType>('../../views/**/*.vue');
 console.log('modulesFiles', modulesFiles);
 
