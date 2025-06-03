@@ -65,6 +65,7 @@ export const transformMenuToRoutes = (
   return routeList;
 };
 
+// 生成动态路由，将生成的动态路由挂在到根路由的children
 export const generateDynamicRoutes = (menus: RouteRecordRaw[]) => {
   const routes = [...routeModules, ...transformMenuToRoutes(menus)];
   const allRoute = [...routes, ...basic];

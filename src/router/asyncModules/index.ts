@@ -1,3 +1,5 @@
+
+
 type ImportVueFileType = typeof import('*.vue');
 type ImportVueFileFnType = () => Promise<ImportVueFileType>;
 
@@ -22,3 +24,10 @@ export const asyncRoutes = Object.entries(modulesFiles).reduce((routes, [url, im
   return routes;
 }, {} as Recordable<ImportVueFileFnType>);
 // console.log('asyncRoutes', asyncRoutes);
+// 生成的routes结构-----------> 
+// {
+//   system/user/index: import()=>import('../../views/system/user/index.vue'),
+//   system/role/index: import()=>import('../../views/system/role/index.vue'),
+//   system/menu/index: import()=>import('../../views/system/menu/index.vue'),
+//   system/dept/index: import()=>import('../../views/system/dept/index.vue'),
+// }
